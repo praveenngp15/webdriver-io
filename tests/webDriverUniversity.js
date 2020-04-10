@@ -1,30 +1,27 @@
-describe('Verify Whether webdriverUniversity link on homepage works correctly',function(){
+describe('Verify Whether webdriverUniversity link on homepage works correctly', function () {
 
- it('Check contactus button opens contact us page',function(done){
-    return browser
-    .setViewportSize({
-        width:1200,
-        height:800
-    })
-    .url('http://www.webdriveruniversity.com/')
-    .getTitle().then(function(title) {
+    it('Check contactus button opens contact us page', function (done) {
+        browser
+        browser.setViewportSize({
+            width: 1200,
+            height: 800
+        })
+        browser.url('http://www.webdriveruniversity.com/')
+        var title = browser.getTitle()
         console.log('Title is: ' + title);
+        browser.click('#contact-us')
+        browser.pause(3000)
     })
-    .click('#contact-us')
-    .pause(3000)
- })
 
 
 
- it('Check Login button opens Login portal page',function(done){
-    return browser
-    .url('http://www.webdriveruniversity.com/')
-      .click('#login-portal')
-      .getTitle().then(function(title) {
-          console.log('Title is: ' + title);
-      })
-      .pause(3000)
+    it('Check Login button opens Login portal page', function (done) {
+        browser.url('http://www.webdriveruniversity.com/')
+        browser.click('#login-portal')
+        var title = browser.getTitle()
+        console.log('Title is: ' + title);
+        browser.pause(3000)
 
-})
+    })
 
 })
