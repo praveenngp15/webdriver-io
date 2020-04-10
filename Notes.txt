@@ -1,0 +1,6 @@
+Section 8: Environments & Base URL
+SERVER=prod npm test -> To Select runtime Environment in Runtime
+
+
+Section 9: Logging
+npm test -- --logLevel=verbose
