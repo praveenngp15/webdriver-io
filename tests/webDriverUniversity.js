@@ -10,6 +10,7 @@ describe('Verify Whether webdriverUniversity link on homepage works correctly', 
         var title = browser.getTitle()
         expect(title).to.equal('WebDriverUniversity.com')
         console.log('Title is: ' + title);
+        browser.debug();
         browser.click('#contact-us')
         browser.pause(3000)
     })
