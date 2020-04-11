@@ -1,4 +1,6 @@
-var assert = require('assert');
+var expect = require('chai').expect;
+var should = require('chai').should;
+
 describe('Verify Whether webdriverUniversity link on homepage works correctly', function () {
 
     it('Check contactus button opens contact us page', function (done) {
@@ -9,7 +11,7 @@ describe('Verify Whether webdriverUniversity link on homepage works correctly', 
         })
         browser.url('/')
         var title = browser.getTitle()
-        assert.equal(title,'WebDriverUniversity.com')
+        expect(title).to.equal('WebDriverUniversity.com')
         console.log('Title is: ' + title);
         browser.click('#contact-us')
         browser.pause(3000)
@@ -22,8 +24,7 @@ describe('Verify Whether webdriverUniversity link on homepage works correctly', 
         browser.click('#login-portal')
         var title = browser.getTitle()
         console.log('Title is: ' + title);
-        assert.equal(title,'WebDriverUniversity.com')
-       // assert.notEqual(title,'WebDriverUniversity.com')
+        title.should.equal('WebDriverUniversity.com');  
         browser.pause(3000)
 
     })
