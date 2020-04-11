@@ -1,6 +1,3 @@
-var expect = require('chai').expect;
-var should = require('chai').should;
-
 describe('Verify Whether webdriverUniversity link on homepage works correctly', function () {
 
     it('Check contactus button opens contact us page', function (done) {
