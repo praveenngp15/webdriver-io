@@ -6,7 +6,7 @@ if (process.env.SERVER === 'prod') {
     baseUrl = 'http://www.webdriveruniversity.com'
 }
 
-var timeout =process.env.DEBUG ? 99999999 : 10000
+var timeout = process.env.DEBUG ? 99999999 : 10000
 exports.config = {
 
     //
@@ -23,7 +23,7 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-         './tests/**/*_Page.js'
+        './tests/**/*_Page.js'
     ],
     //
     // ============
@@ -132,13 +132,28 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/reporters/dot.html
-    // reporters: ['dot'],
+    reporters: ['dot', 'junit','json','allure'],
+
+    reporterOptions: {
+        junit: {
+            outputDir: './reports/junit-results/',
+        },
+        json: {
+            outputDir: './reports/json-results/',
+        },
+        allure: {
+            outputDir: './reports/allure-results/',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+            useCucumberStepReporter: false
+        } 
+    },
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout:timeout
+        timeout: timeout
     },
     //
     // =====
@@ -162,8 +177,12 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // beforeSession: function (config, capabilities, specs) {
-    // },
+     beforeSession: function (config, capabilities, specs) {
+        
+        const del = require('del')
+        del(['reports','errorShots','allure-report'])
+    
+    },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.
@@ -236,8 +255,9 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    // after: function (result, capabilities, specs) {
-    // },
+     //after: function (result, capabilities, specs) {
+       
+    //},
     /**
      * Gets executed right after terminating the webdriver session.
      * @param {Object} config wdio configuration object
